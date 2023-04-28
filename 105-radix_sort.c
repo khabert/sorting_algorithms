@@ -19,22 +19,29 @@ void radix_sort(int *array, size_t size)
 	if (!output)
 		return;
 
-	for (i = 0; i < size; i++) {
+	for (i = 0; i < size; i++)
+	{
 		if (array[i] > max)
 			max = array[i];
 	}
-	while (max / exp > 0) {
+	while (max / exp > 0)
+	{
 		int bucket[10] = {0};
-		for (i = 0; i < size; i++) {
+
+		for (i = 0; i < size; i++)
+		{
 			bucket[array[i] / exp % 10]++;
 		}
-		for (i = 1; i < 10; i++) {
+		for (i = 1; i < 10; i++)
+		{
 			bucket[i] += bucket[i - 1];
 		}
-		for (j = size - 1; (int)j >= 0; j--) {
+		for (j = size - 1; (int)j >= 0; j--)
+		{
 			output[--bucket[array[j] / exp % 10]] = array[j];
 		}
-		for (i = 0; i < size; i++) {
+		for (i = 0; i < size; i++)
+		{
 			array[i] = output[i];
 		}
 		print_array(array, size);
